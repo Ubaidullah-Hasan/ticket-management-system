@@ -7,7 +7,7 @@ const router = Router();
 
 router.post(
   '/create-user',
-  validateRequest(UserValidation.userValidationSchema),
+  validateRequest(UserValidation.createUserValidationSchema),
   UserControllers.createUser
 );
 

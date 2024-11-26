@@ -1,15 +1,28 @@
 import { z } from 'zod';
+import { USER_ROLE } from './user.constant';
 
-const userValidationSchema = z.object({
-  name: z.string().min(3, {message: "Name must contain 3 characters"}),
-  email: z.string().email({message: "Invalid email!"}).trim(),
-  pasword: z
-    .string({
-      invalid_type_error: 'Password must be string',
-    })
-    .max(20, { message: 'Password can not be more than 20 characters' })
+
+const createUserValidationSchema = z.object({
+  body: z.object({
+    name: z.string({
+      required_error: 'Name is required',
+    }),
+    role: z.nativeEnum(USER_ROLE).optional(),
+    email: z
+      .string({
+        required_error: 'Email is required',
+      })
+      .email({
+        message: 'Invalid email',
+      }),
+    password: z.string({
+      required_error: 'Password is required',
+    }),
+  }),
 });
 
+
+
 export const UserValidation = {
-  userValidationSchema,
+  createUserValidationSchema
 };
