@@ -9,6 +9,7 @@ export interface TUser {
   role: 'admin' | 'user';
   status: 'in-progress' | 'blocked';
   isDeleted: boolean;
+  blacklistedTokens: string;
 }
 
 export interface UserModel extends Model<TUser> {

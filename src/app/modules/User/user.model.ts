@@ -35,6 +35,10 @@ const userSchema = new Schema<TUser, UserModel>(
       type: Boolean,
       default: false,
     },
+    blacklistedTokens: {
+      type: String,
+      default: "",
+    }
   },
   {
     timestamps: true,
