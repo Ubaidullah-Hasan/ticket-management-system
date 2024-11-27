@@ -31,7 +31,18 @@ const updateBusInfo = async (busId: string, updatedBusData: Partial<IBus>) => {
     return updatedBus;
 }
 
+const deleteBus = async (busId: string) => {
+    const bus = await Bus.findById(busId);
+    if (!bus) {
+        throw new AppError(StatusCodes.NOT_FOUND, "Bus not found!");
+    }
+
+    await Bus.findByIdAndDelete(busId);
+    return [];
+}
+
 export const BusServices = {
     createBusIntoDB,
     updateBusInfo,
+    deleteBus
 }

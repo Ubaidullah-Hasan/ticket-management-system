@@ -30,7 +30,22 @@ const updateBusInfo = catchAsync(async (req, res) => {
 });
 
 
+const deleteBus = catchAsync(async (req, res) => {
+    const { busId } = req.params;
+
+    const result = await BusServices.deleteBus(busId);
+
+    sendResponse(res, {
+        statusCode: StatusCodes.OK,
+        success: true,
+        message: 'Bus delete succesfully',
+        data: result,
+    });
+});
+
+
 export const BusControllers = {
     createBus,
     updateBusInfo,
+    deleteBus
 };
