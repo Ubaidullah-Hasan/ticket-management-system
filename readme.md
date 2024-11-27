@@ -56,7 +56,6 @@ You can view the live version of the project at:
     PORT=3000
     NODE_ENV=development
     DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>
-    JWT_SECRET=your_jwt_secret
     SALT_ROUND=12
     JWT_ACCESS_SECRET="1888cc385ec74b79e53432e770c938bf7f04a045888ac991091237d8566a89aa8af67cc64d99db95af1b02a2229edbecdb921f302d2cc8ff5dbe1e6b642f3330" 
     JWT_REFRESH_SECRET="9063557f7b6e0480156c0dd183484e12deae66664645b556e35e5d4403b1860d6358d45a89ea5c0baea7ab215bac3c64405a87e5f428e102c3fdf2969f4d8047"
