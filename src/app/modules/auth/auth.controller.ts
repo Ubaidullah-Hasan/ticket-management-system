@@ -52,9 +52,10 @@ const registerUser = catchAsync(async (req, res) => {
 
 
 const logout = catchAsync(async (req, res) => {
-  const { refreshToken } = req.body; 
+  const { cookie } = req.headers; 
+  const refreshToken = cookie?.split("=")[1];
 
-  const result = await AuthServices.logoutUser(refreshToken);
+  const result = await AuthServices.logoutUser(refreshToken as string);
 
   sendResponse(res, {
     statusCode: StatusCodes.OK,

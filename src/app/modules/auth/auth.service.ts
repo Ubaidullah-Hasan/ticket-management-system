@@ -111,7 +111,7 @@ const registerUser = async (payload: TUser) => {
 type TDecodedToken = {
   _id: string,
   name: string,
-  email: string,
+  email: string, 
   role: string,
   status: string,
   isDeleted: boolean,
@@ -132,7 +132,7 @@ const logoutUser = async (refreshToken: string) => {
     { new: true }
   );
 
-  return [];
+  return "";
 };
 
 
