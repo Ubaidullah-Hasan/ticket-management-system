@@ -41,8 +41,28 @@ const deleteBus = async (busId: string) => {
     return [];
 }
 
+const getAllAvailableBus = async () => {
+
+    // Use aggregation to handle complex date and time logic
+    const availableBuses = await Bus.aggregate([
+        {
+            $match: {
+                availableSeats: { $gt: 0 }, // Buses with available seats
+            },
+        },
+    ]);
+
+    // If no buses found, send an empty array with a message
+    if (availableBuses.length === 0) {
+        throw new AppError(StatusCodes.NOT_FOUND, "No available buses found!");
+    }
+
+    return availableBuses;
+};
+
 export const BusServices = {
     createBusIntoDB,
     updateBusInfo,
-    deleteBus
+    deleteBus,
+    getAllAvailableBus,
 }

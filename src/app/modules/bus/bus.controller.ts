@@ -43,9 +43,21 @@ const deleteBus = catchAsync(async (req, res) => {
     });
 });
 
+const getAllBuses = catchAsync(async (req, res) => {
+    const result = await BusServices.getAllAvailableBus();
+
+    sendResponse(res, {
+        statusCode: StatusCodes.OK,
+        success: true,
+        message: 'Bus retrive succesfully',
+        data: result,
+    });
+});
+
 
 export const BusControllers = {
     createBus,
     updateBusInfo,
-    deleteBus
+    deleteBus,
+    getAllBuses,
 };
