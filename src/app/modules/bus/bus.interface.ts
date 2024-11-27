@@ -12,7 +12,8 @@ export interface IBus extends Document {
     };
     schedules: {
         date: Date;
-        time: string;
+        startTime: string;
+        endTime: string;
         isCanceled: boolean;
     }[];
     ticketPrice: number;
